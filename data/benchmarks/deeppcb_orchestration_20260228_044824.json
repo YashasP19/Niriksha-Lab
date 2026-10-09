@@ -1,0 +1,150 @@
+{
+  "run_at_utc": "2026-02-28T04:48:24.448264+00:00",
+  "config": {
+    "deeppcb_root": "/Users/taehoje/hw/data/external/DeepPCB",
+    "spec_path": "/Users/taehoje/hw/data/specs/deeppcb_demo_spec_v1.md",
+    "max_cases": 2,
+    "per_class": 1,
+    "seed": 42,
+    "forced_model": null,
+    "iou_threshold": 0.33
+  },
+  "summary": {
+    "total_cases": 2,
+    "success_cases": 2,
+    "failed_cases": 0,
+    "avg_latency_sec": 63.4867705,
+    "model_usage": {
+      "gemini-3.1-pro-preview": 2
+    },
+    "localization_prf": {
+      "precision": 0.16666666666666666,
+      "recall": 0.07142857142857142,
+      "f1": 0.1
+    },
+    "class_aware_prf": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "key_pool_status": [
+      {
+        "index": 0,
+        "key_masked": "AIzaSy...qu1Y",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 4,
+        "last_error": null
+      },
+      {
+        "index": 1,
+        "key_masked": "gen-la...0840",
+        "invalid": true,
+        "cooldown_seconds": 0.0,
+        "fail_count": 1,
+        "success_count": 0,
+        "last_error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelang"
+      },
+      {
+        "index": 2,
+        "key_masked": "AIzaSy...b2NY",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 4,
+        "last_error": null
+      },
+      {
+        "index": 3,
+        "key_masked": "AIzaSy...GgbQ",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 3,
+        "last_error": null
+      },
+      {
+        "index": 4,
+        "key_masked": "AIzaSy...BzCw",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 3,
+        "last_error": null
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "20085204",
+      "primary_class": 1,
+      "primary_class_name": "open",
+      "gt_count": 7,
+      "pred_count": 1,
+      "model_used": "gemini-3.1-pro-preview",
+      "started_at": "2026-02-28T04:48:24.448454+00:00",
+      "ended_at": "2026-02-28T04:49:31.658391+00:00",
+      "latency_sec": 67.209937,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "root_cause": "Over-etching during the PCB manufacturing process or mechanical stress causing a physical break in the trace path, leading to a NET_OPEN_DETECTED error.",
+      "resolution": [
+        "Immediate rework action: Repair the broken trace section to restore electrical continuity.",
+        "Verification action: Perform continuity testing on the repaired trace to ensure the open circuit is resolved.",
+        "Process feedback action: Review the etching process parameters to prevent over-etching and evaluate mechanical handling procedures to minimize stress on the PCB."
+      ]
+    },
+    {
+      "case_id": "13000046",
+      "primary_class": 2,
+      "primary_class_name": "short",
+      "gt_count": 7,
+      "pred_count": 5,
+      "model_used": "gemini-3.1-pro-preview",
+      "started_at": "2026-02-28T04:49:31.658569+00:00",
+      "ended_at": "2026-02-28T04:50:31.422173+00:00",
+      "latency_sec": 59.763604,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 1,
+        "fp": 4,
+        "fn": 6
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 5,
+        "fn": 7
+      },
+      "root_cause": "Manufacturing defect causing incomplete etching or spurious copper deposition, resulting in isolated copper fragments that bridge adjacent electrical nets and cause short circuits.",
+      "resolution": [
+        "Review and adjust etching process parameters to ensure complete removal of unintended copper.",
+        "Implement Automated Optical Inspection (AOI) to detect and flag spurious copper fragments immediately after the etching phase.",
+        "Rework affected boards by manually removing the spurious copper islands if feasible, otherwise scrap the defective units to prevent field failures."
+      ]
+    }
+  ]
+}

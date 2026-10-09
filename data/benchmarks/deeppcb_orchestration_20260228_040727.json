@@ -1,0 +1,150 @@
+{
+  "run_at_utc": "2026-02-28T04:07:27.410808+00:00",
+  "config": {
+    "deeppcb_root": "/Users/taehoje/hw/data/external/DeepPCB",
+    "spec_path": "/Users/taehoje/hw/data/specs/deeppcb_demo_spec_v1.md",
+    "max_cases": 2,
+    "per_class": 1,
+    "seed": 42,
+    "forced_model": null,
+    "iou_threshold": 0.33
+  },
+  "summary": {
+    "total_cases": 2,
+    "success_cases": 2,
+    "failed_cases": 0,
+    "avg_latency_sec": 68.5705615,
+    "model_usage": {
+      "gemini-2.5-flash": 2
+    },
+    "localization_prf": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "class_aware_prf": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "key_pool_status": [
+      {
+        "index": 0,
+        "key_masked": "AIzaSy...qu1Y",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 5,
+        "last_error": null
+      },
+      {
+        "index": 1,
+        "key_masked": "gen-la...0840",
+        "invalid": true,
+        "cooldown_seconds": 0.0,
+        "fail_count": 1,
+        "success_count": 0,
+        "last_error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelang"
+      },
+      {
+        "index": 2,
+        "key_masked": "AIzaSy...b2NY",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 4,
+        "last_error": null
+      },
+      {
+        "index": 3,
+        "key_masked": "AIzaSy...GgbQ",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 5,
+        "last_error": null
+      },
+      {
+        "index": 4,
+        "key_masked": "AIzaSy...BzCw",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 4,
+        "last_error": null
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "20085204",
+      "primary_class": 1,
+      "primary_class_name": "open",
+      "gt_count": 7,
+      "pred_count": 1,
+      "model_used": "gemini-2.5-flash",
+      "started_at": "2026-02-28T04:07:27.410993+00:00",
+      "ended_at": "2026-02-28T04:08:25.692274+00:00",
+      "latency_sec": 58.281281,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "root_cause": "The primary root cause is a manufacturing defect, specifically an etching error or physical damage during handling, leading to a complete break in the copper trace on the PCB. This aligns with the 'NET_OPEN_DETECTED' error and the visual evidence of a broken trace, causing an open circuit.",
+      "resolution": [
+        "Immediate Rework Action: Carefully repair the broken trace using a conductive epoxy or by soldering a jumper wire across the break. Focus on the area identified by the bounding box (x1:600, y1:800, x2:700, y2:900) in the physical image.",
+        "Verification Action: After rework, perform a continuity test on the repaired trace to ensure the electrical path is fully restored. Visually inspect the repair under magnification to confirm proper adhesion and absence of new defects.",
+        "Process Feedback Action: Generate a detailed report for the PCB manufacturer, including the physical image with the identified defect and the root cause analysis. Request an investigation into their etching process, handling procedures, and quality control to prevent recurrence of such trace breaks."
+      ]
+    },
+    {
+      "case_id": "13000046",
+      "primary_class": 2,
+      "primary_class_name": "short",
+      "gt_count": 7,
+      "pred_count": 3,
+      "model_used": "gemini-2.5-flash",
+      "started_at": "2026-02-28T04:08:25.692483+00:00",
+      "ended_at": "2026-02-28T04:09:44.552325+00:00",
+      "latency_sec": 78.859842,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 3,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 3,
+        "fn": 7
+      },
+      "root_cause": "The primary root cause is a manufacturing defect, specifically spurious copper or micro-shorts, occurring during the PCB etching or assembly process. This led to unintended conductive paths between adjacent traces/pads, causing the 'NET_SHORT_DETECTED' error. The design itself appears to have sufficient clearance, but the manufacturing process introduced the defect.",
+      "resolution": [
+        "**Immediate Action (Rework):** Manually remove the identified spurious copper and solder bridges using a precision knife or desoldering tools at the specified bounding box locations (e.g., (x1:160, y1:130, x2:200, y2:160) for the upper-left defect).",
+        "**Process Feedback (Manufacturing):** Issue a detailed report to the PCB manufacturing team, including images and precise bounding box coordinates of the defects. Request an immediate review of the etching, cleaning, and soldering stages to identify and rectify the process flaw that introduced the spurious copper and solder bridges. This directly addresses the non-compliance with SPACING-SHORT-001 and SPURIOUS-COPPER-005.",
+        "**Quality Control (Inspection):** Enhance post-manufacturing optical inspection (AOI) to specifically detect spurious copper and micro-shorts, especially in densely routed areas and around IC footprints, to prevent similar defects from reaching subsequent assembly stages."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "tested_at_utc": "2026-02-28T04:48:16.069342+00:00",
+  "recommended_model": "gemini-3.1-pro-preview",
+  "model_used": "gemini-3.1-pro-preview",
+  "latency_sec": 73.3592,
+  "trace_ids": [
+    "agent_1",
+    "agent_2a",
+    "agent_2b",
+    "agent_3",
+    "agent_4"
+  ],
+  "bbox_count": 4,
+  "root_cause": "Manufacturing defect causing spurious copper fragments and isolated copper islands between adjacent traces, resulting in an electrical short."
+}

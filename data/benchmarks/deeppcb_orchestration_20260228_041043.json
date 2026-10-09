@@ -1,0 +1,293 @@
+{
+  "run_at_utc": "2026-02-28T04:10:43.449380+00:00",
+  "config": {
+    "deeppcb_root": "/Users/taehoje/hw/data/external/DeepPCB",
+    "spec_path": "/Users/taehoje/hw/data/specs/deeppcb_demo_spec_v1.md",
+    "max_cases": 6,
+    "per_class": 1,
+    "seed": 42,
+    "forced_model": null,
+    "iou_threshold": 0.33
+  },
+  "summary": {
+    "total_cases": 6,
+    "success_cases": 6,
+    "failed_cases": 0,
+    "avg_latency_sec": 78.12462716666667,
+    "model_usage": {
+      "gemini-2.5-flash": 5,
+      "gemini-3-flash-preview": 1
+    },
+    "localization_prf": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "class_aware_prf": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "key_pool_status": [
+      {
+        "index": 0,
+        "key_masked": "AIzaSy...qu1Y",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 15,
+        "last_error": null
+      },
+      {
+        "index": 1,
+        "key_masked": "gen-la...0840",
+        "invalid": true,
+        "cooldown_seconds": 0.0,
+        "fail_count": 1,
+        "success_count": 0,
+        "last_error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelang"
+      },
+      {
+        "index": 2,
+        "key_masked": "AIzaSy...b2NY",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 16,
+        "last_error": null
+      },
+      {
+        "index": 3,
+        "key_masked": "AIzaSy...GgbQ",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 13,
+        "last_error": null
+      },
+      {
+        "index": 4,
+        "key_masked": "AIzaSy...BzCw",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 12,
+        "last_error": null
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "20085204",
+      "primary_class": 1,
+      "primary_class_name": "open",
+      "gt_count": 7,
+      "pred_count": 1,
+      "model_used": "gemini-2.5-flash",
+      "started_at": "2026-02-28T04:10:43.449577+00:00",
+      "ended_at": "2026-02-28T04:11:49.179000+00:00",
+      "latency_sec": 65.729423,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "root_cause": "The primary root cause is an open circuit due to a physical break in the PCB trace, specifically observed in the trace connecting two circular pads in the lower right quadrant. This break interrupts net continuity, directly causing the 'NET_OPEN_DETECTED' error. This type of defect can stem from manufacturing issues such as over-etching, physical damage during handling, or mechanical stress.",
+      "resolution": [
+        "Immediate Rework Action: Precisely repair the severed trace in the lower right quadrant (bbox: x1:500, y1:600, x2:550, y2:620) using a conductive epoxy or by carefully soldering a jumper wire, ensuring proper electrical continuity and mechanical integrity.",
+        "Verification Action: After rework, perform a continuity test on the repaired trace to confirm the open circuit is resolved. Conduct a visual inspection under magnification to ensure the repair is clean, robust, and does not introduce any new defects (e.g., shorts or lifted pads).",
+        "Process Feedback Action: Investigate the PCB manufacturing process, specifically the etching and handling stages, to identify the source of the trace break. Implement corrective actions such as optimizing etch parameters, improving handling procedures, or enhancing quality control inspections to prevent recurrence of similar open-circuit defects."
+      ]
+    },
+    {
+      "case_id": "13000046",
+      "primary_class": 2,
+      "primary_class_name": "short",
+      "gt_count": 7,
+      "pred_count": 1,
+      "model_used": "gemini-2.5-flash",
+      "started_at": "2026-02-28T04:11:49.179256+00:00",
+      "ended_at": "2026-02-28T04:12:44.528320+00:00",
+      "latency_sec": 55.349064,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "root_cause": "The root cause is a manufacturing defect, specifically spurious copper or an etching defect, which created an unintended micro-short circuit between two adjacent traces on the PCB. This likely occurred during the etching process where residual copper was not fully removed, leading to a 'NET_SHORT_DETECTED' error.",
+      "resolution": [
+        "Immediately rework the affected PCB by carefully removing the spurious copper (solder bridge) between the two traces using a precision knife or soldering iron to restore proper electrical isolation.",
+        "Provide detailed feedback to the PCB manufacturer, including the physical evidence (image with bounding box) and the specific rule violations (SPACING-SHORT-001, SPURIOUS-COPPER-005). Request an investigation into the etching and cleaning process stages to prevent recurrence of spurious copper defects.",
+        "Implement enhanced visual inspection or automated optical inspection (AOI) at the PCB manufacturing facility, specifically targeting areas with close trace proximity, to detect similar micro-shorts or spurious copper before board assembly."
+      ]
+    },
+    {
+      "case_id": "44000072",
+      "primary_class": 3,
+      "primary_class_name": "mousebite",
+      "gt_count": 7,
+      "pred_count": 1,
+      "model_used": "gemini-2.5-flash",
+      "started_at": "2026-02-28T04:12:44.528407+00:00",
+      "ended_at": "2026-02-28T04:13:33.992581+00:00",
+      "latency_sec": 49.464174,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "root_cause": "Manufacturing defect during PCB fabrication, specifically improper etching or milling, resulted in a 'mousebite' (missing copper chunk) on the board edge. This physical damage compromises the board's integrity and potentially severs critical traces, leading to an open circuit or signal integrity issues.",
+      "resolution": [
+        "Visually inspect the affected area (bbox: x1: 298, y1: 252, x2: 320, y2: 272) on the physical board to confirm the 'mousebite' defect and assess its exact impact on adjacent traces and electrical clearance, as per MOUSEBITE-EDGE-003.",
+        "Perform electrical continuity tests on any traces suspected of being severed or compromised by the 'mousebite' to confirm or rule out an open circuit, as per OPEN-CIRCUIT-002.",
+        "If critical traces are severed, the PCB is likely unrepairable and should be scrapped. If non-critical areas are affected and electrical continuity is maintained, assess if the cosmetic defect is acceptable per IPC-A-600 standards.",
+        "Provide feedback to the PCB manufacturer regarding the 'mousebite' defect, specifying the location and nature of the manufacturing flaw (e.g., improper etching or milling process) to prevent recurrence."
+      ]
+    },
+    {
+      "case_id": "50600046",
+      "primary_class": 4,
+      "primary_class_name": "spur",
+      "gt_count": 6,
+      "pred_count": 2,
+      "model_used": "gemini-2.5-flash",
+      "started_at": "2026-02-28T04:13:33.992851+00:00",
+      "ended_at": "2026-02-28T04:14:34.655670+00:00",
+      "latency_sec": 60.662819,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 6
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 6
+      },
+      "root_cause": "The primary root cause is a manufacturing defect during the etching process, leading to a 'spur' (abnormal narrow protrusion) on the PCB trace. This is exacerbated by insufficient cleaning or improper chemical concentrations during manufacturing, also leading to 'spurious copper'. These defects reduce the electrical clearance between traces, increasing the risk of intermittent short circuits and signal integrity issues.",
+      "resolution": [
+        "Rework the identified PCB by carefully removing the spur (at x1:313, y1:204, x2:328, y2:218) and the spurious copper (at x1:403, y1:361, x2:418, y2:375) using precision tools (e.g., micro-knife or fine-tip soldering iron).",
+        "Implement improved quality control checks in the etching and cleaning stages of the PCB manufacturing process to prevent the formation of spurs and spurious copper. This includes verifying chemical concentrations and rinse cycles.",
+        "Review and update manufacturing process specifications to include stricter tolerances for trace protrusions and residual copper, aligning with SPUR-PROTRUSION-004 and SPURIOUS-COPPER-005 rules."
+      ]
+    },
+    {
+      "case_id": "13000116",
+      "primary_class": 5,
+      "primary_class_name": "copper",
+      "gt_count": 5,
+      "pred_count": 1,
+      "model_used": "gemini-2.5-flash",
+      "started_at": "2026-02-28T04:14:34.655998+00:00",
+      "ended_at": "2026-02-28T04:15:28.932433+00:00",
+      "latency_sec": 54.276435,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 5
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 5
+      },
+      "root_cause": "Manufacturing defect: Spurious copper (residual conductive fragment) due to an issue in the PCB etching or cleaning process, creating a micro-short between the I2C SDA and GND lines. This defect is causing the SDA line to be held LOW, leading to I2C bus arbitration loss.",
+      "resolution": [
+        "Immediately remove the spurious copper fragment bridging the I2C SDA and GND traces using a precision knife or soldering iron.",
+        "Generate a detailed report for the PCB manufacturer, including photographic evidence and the specific location (bbox: x1:305, y1:315, x2:328, y2:324) of the spurious copper. Request an investigation into their etching and cleaning processes to prevent recurrence.",
+        "Perform functional testing of the I2C bus after defect removal to ensure proper communication and verify the resolution of the 'I2C Bus Arbitration Lost' error."
+      ]
+    },
+    {
+      "case_id": "00041002",
+      "primary_class": 6,
+      "primary_class_name": "pin-hole",
+      "gt_count": 7,
+      "pred_count": 2,
+      "model_used": "gemini-3-flash-preview",
+      "started_at": "2026-02-28T04:15:28.932596+00:00",
+      "ended_at": "2026-02-28T04:18:32.198444+00:00",
+      "latency_sec": 183.265848,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 7
+      },
+      "root_cause": "PCB Etching and Electroplating Process Instability leading to localized copper voids (pin-holes) in high-current power traces and incomplete etch residue (spurious copper) near signal vias.",
+      "resolution": [
+        "REWORK: Use precision soldering or conductive epoxy to bridge the pin-hole voids on the VCC/VDD Power Rail (PWR_BUS_01) to restore current-carrying capacity.",
+        "REWORK: Manually remove spurious copper fragments near VIA_SIG_42 using a precision micro-knife to prevent intermittent connectivity or leakage paths.",
+        "VERIFICATION: Perform a 4-wire Kelvin resistance measurement on the VCC/VDD rail to ensure resistance has returned to nominal spec levels.",
+        "PROCESS FEEDBACK: Audit the electroplating bath for contaminants and optimize the etching wash pressure to eliminate copper voids and residual fragments in future batches."
+      ]
+    }
+  ]
+}

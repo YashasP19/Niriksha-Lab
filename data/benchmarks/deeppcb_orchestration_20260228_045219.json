@@ -1,0 +1,289 @@
+{
+  "run_at_utc": "2026-02-28T04:52:19.732173+00:00",
+  "config": {
+    "deeppcb_root": "/Users/taehoje/hw/data/external/DeepPCB",
+    "spec_path": "/Users/taehoje/hw/data/specs/deeppcb_demo_spec_v1.md",
+    "max_cases": 6,
+    "per_class": 1,
+    "seed": 42,
+    "forced_model": null,
+    "iou_threshold": 0.33
+  },
+  "summary": {
+    "total_cases": 6,
+    "success_cases": 6,
+    "failed_cases": 0,
+    "avg_latency_sec": 66.6761645,
+    "model_usage": {
+      "gemini-3.1-pro-preview": 6
+    },
+    "localization_prf": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "class_aware_prf": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "key_pool_status": [
+      {
+        "index": 0,
+        "key_masked": "AIzaSy...qu1Y",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 9,
+        "last_error": null
+      },
+      {
+        "index": 1,
+        "key_masked": "gen-la...0840",
+        "invalid": true,
+        "cooldown_seconds": 0.0,
+        "fail_count": 1,
+        "success_count": 0,
+        "last_error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelang"
+      },
+      {
+        "index": 2,
+        "key_masked": "AIzaSy...b2NY",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 9,
+        "last_error": null
+      },
+      {
+        "index": 3,
+        "key_masked": "AIzaSy...GgbQ",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 8,
+        "last_error": null
+      },
+      {
+        "index": 4,
+        "key_masked": "AIzaSy...BzCw",
+        "invalid": false,
+        "cooldown_seconds": 0.0,
+        "fail_count": 0,
+        "success_count": 8,
+        "last_error": null
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "20085204",
+      "primary_class": 1,
+      "primary_class_name": "open",
+      "gt_count": 7,
+      "pred_count": 2,
+      "model_used": "gemini-3.1-pro-preview",
+      "started_at": "2026-02-28T04:52:19.732372+00:00",
+      "ended_at": "2026-02-28T04:53:05.035182+00:00",
+      "latency_sec": 45.30281,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 7
+      },
+      "root_cause": "Manufacturing defect during the etching process or physical damage post-fabrication leading to broken traces, resulting in a NET_OPEN_DETECTED error.",
+      "resolution": [
+        "Immediate rework action: Repair the broken trace sections to restore electrical continuity.",
+        "Verification action: Perform continuity testing and visual inspection to ensure the repair is successful and no other open circuits exist.",
+        "Process feedback action: Review the etching and handling processes to prevent over-removal of copper and physical damage to traces."
+      ]
+    },
+    {
+      "case_id": "13000046",
+      "primary_class": 2,
+      "primary_class_name": "short",
+      "gt_count": 7,
+      "pred_count": 5,
+      "model_used": "gemini-3.1-pro-preview",
+      "started_at": "2026-02-28T04:53:05.035286+00:00",
+      "ended_at": "2026-02-28T04:54:26.203005+00:00",
+      "latency_sec": 81.167719,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 5,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 5,
+        "fn": 7
+      },
+      "root_cause": "Manufacturing process defect leading to spurious copper deposition or incomplete etching, resulting in isolated copper fragments between adjacent traces.",
+      "resolution": [
+        "Review and adjust the etching process parameters to ensure complete removal of unintended copper.",
+        "Implement stricter automated optical inspection (AOI) to detect and flag spurious copper fragments before final assembly.",
+        "Clean the affected boards to remove residual conductive fragments if possible, or scrap boards with unrecoverable short risks."
+      ]
+    },
+    {
+      "case_id": "44000072",
+      "primary_class": 3,
+      "primary_class_name": "mousebite",
+      "gt_count": 7,
+      "pred_count": 1,
+      "model_used": "gemini-3.1-pro-preview",
+      "started_at": "2026-02-28T04:54:26.203207+00:00",
+      "ended_at": "2026-02-28T04:55:04.534481+00:00",
+      "latency_sec": 38.331274,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "root_cause": "Improper depanelization or mechanical stress during manufacturing caused a piece of the copper/substrate to break off, resulting in a mousebite defect on the outer copper trace.",
+      "resolution": [
+        "Review and adjust the depanelization process to minimize mechanical stress on the board edges.",
+        "Increase the clearance between the outer copper traces and the panelization breakaway tabs in the CAD layout.",
+        "Inspect affected boards for localized resistance increases and structural weakness at the defect site."
+      ]
+    },
+    {
+      "case_id": "50600046",
+      "primary_class": 4,
+      "primary_class_name": "spur",
+      "gt_count": 6,
+      "pred_count": 1,
+      "model_used": "gemini-3.1-pro-preview",
+      "started_at": "2026-02-28T04:55:04.534671+00:00",
+      "ended_at": "2026-02-28T04:55:42.976668+00:00",
+      "latency_sec": 38.441997,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 6
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 6
+      },
+      "root_cause": "Manufacturing defect during the etching process leaving excess copper, creating a spur protrusion.",
+      "resolution": [
+        "Remove the spur protrusion to restore required electrical clearance.",
+        "Calibrate etching process to prevent excess copper retention."
+      ]
+    },
+    {
+      "case_id": "13000116",
+      "primary_class": 5,
+      "primary_class_name": "copper",
+      "gt_count": 5,
+      "pred_count": 1,
+      "model_used": "gemini-3.1-pro-preview",
+      "started_at": "2026-02-28T04:55:42.976983+00:00",
+      "ended_at": "2026-02-28T04:57:14.857614+00:00",
+      "latency_sec": 91.880631,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 5
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 5
+      },
+      "root_cause": "Incomplete etching during the PCB manufacturing process resulted in residual spurious copper fragments and bridges between signal traces, violating electrical clearance rules and causing short circuits.",
+      "resolution": [
+        "Review and adjust the PCB etching process parameters to ensure complete removal of unintended copper between traces.",
+        "Implement stricter Automated Optical Inspection (AOI) to detect spurious copper fragments and bridges before final assembly.",
+        "Rework the affected prototype boards by carefully removing the residual copper bridges to restore the required electrical clearance."
+      ]
+    },
+    {
+      "case_id": "00041002",
+      "primary_class": 6,
+      "primary_class_name": "pin-hole",
+      "gt_count": 7,
+      "pred_count": 1,
+      "model_used": "gemini-3.1-pro-preview",
+      "started_at": "2026-02-28T04:57:14.857887+00:00",
+      "ended_at": "2026-02-28T04:58:59.790443+00:00",
+      "latency_sec": 104.932556,
+      "orchestration_trace_ids": [
+        "agent_1",
+        "agent_2a",
+        "agent_2b",
+        "agent_3",
+        "agent_4"
+      ],
+      "orchestration_ok": true,
+      "localization": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "class_aware": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 7
+      },
+      "root_cause": "Manufacturing process issue (likely etching or plating) resulting in a localized copper void (pin-hole) on the trace, causing increased resistance.",
+      "resolution": [
+        "Immediate rework action: Repair the pin-hole void on the affected copper trace to restore the required cross-sectional area.",
+        "Verification action: Perform continuity and resistance testing on the repaired trace to ensure it meets current carrying capacity requirements.",
+        "Process feedback action: Review and adjust the etching and plating process controls to prevent localized copper voids in future manufacturing runs."
+      ]
+    }
+  ]
+}

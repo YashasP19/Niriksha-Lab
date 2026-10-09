@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Warm beige palette */
+  --bg: #f5f0e8;
+  --bg-alt: #ede7db;
+  --card: #ffffff;
+  --card-hover: #faf8f4;
+  --border: #e0d8cc;
+  --border-active: #c9bfae;
+
+  --text: #2c2416;
+  --text-secondary: #5c4f3a;
+  --text-muted: #9a8d78;
+
+  --accent: #2563eb;
+  --accent-light: rgba(37,99,235,0.08);
+  --accent-border: rgba(37,99,235,0.2);
+  --success: #16a34a;
+  --success-light: rgba(22,163,74,0.08);
+  --warning: #d97706;
+  --warning-light: rgba(217,119,6,0.08);
+  --danger: #dc2626;
+  --danger-light: rgba(220,38,38,0.08);
+
+  --bbox-physical: #dc2626;
+  --bbox-design: #d97706;
+
+  --font: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root { min-height: 100vh; }
+
+/* Card */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--card);
+  color: var(--text); font-family: var(--font); font-weight: 600;
+  font-size: 0.8125rem; cursor: pointer; transition: all 0.2s;
+}
+.btn:hover:not(:disabled) { background: var(--card-hover); border-color: var(--border-active); box-shadow: var(--shadow-sm); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-accent {
+  background: var(--accent); border-color: var(--accent);
+  color: #fff;
+}
+.btn-accent:hover:not(:disabled) {
+  background: #1d4ed8; box-shadow: var(--shadow-md);
+}
+
+/* Label */
+.label {
+  font-size: 0.8125rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: var(--space-sm);
+}
+
+.mono { font-family: var(--mono); font-size: 0.8125rem; }
+
+/* Textarea */
+textarea {
+  font-family: var(--mono); font-size: 0.8125rem;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 10px 12px; width: 100%; resize: vertical;
+  background: var(--card); color: var(--text);
+  outline: none; transition: border-color 0.2s; line-height: 1.6;
+}
+textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+textarea::placeholder { color: var(--text-muted); }
+
+/* Select */
+select {
+  padding: 8px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--card);
+  color: var(--text); font-family: var(--font); font-size: 0.8125rem;
+  outline: none; cursor: pointer;
+}
+select:focus { border-color: var(--accent); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes spin-ring {
+  to { transform: rotate(360deg); }
+}
+@keyframes flow-dash {
+  to { stroke-dashoffset: -20; }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes pulse-border {
+  0%, 100% { border-color: var(--accent); }
+  50% { border-color: rgba(37,99,235,0.4); }
+}
+@keyframes number-pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
