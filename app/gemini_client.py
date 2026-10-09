@@ -15,17 +15,17 @@ from .schemas import GeminiDefectResponse, ModelInfo
 from .utils import safe_json_loads
 
 MODEL_PRIORITY = [
+    "gemma-4-31b-it",
+    "gemma-4-26b-a4b-it",
     "gemini-3.1-flash-image-preview",
-    "gemini-3.1-pro",
     "gemini-3.1-pro-preview",
-    "gemini-3.1-pro-preview-customtools",
     "gemini-3-flash-preview",
-    "gemini-3-pro-preview",
     "gemini-2.5-pro",
     "gemini-2.5-flash",
 ]
 
 MODEL_ALIAS = {
+    "gemma-4": "gemma-4-31b-it",
     "gemini-3.1-flash": "gemini-3.1-flash-image-preview",
     "gemini-3.1-flash-image": "gemini-3.1-flash-image-preview",
 }

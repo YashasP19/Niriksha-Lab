@@ -224,7 +224,7 @@ def symptom_prompt(*, context: str, error_log: str, spec_focus_plan: str | None 
         f"error_log:\n{error_log}\n\n"
         f"{focus_block}"
         "[TASK]\n"
-        "1) Use error log + toc plan and emit `spec_navigation.top_focus_sections` (목차 기준 점검 우선순위).\n"
+        "1) Use error log + toc plan and emit `spec_navigation.top_focus_sections` (inspection priority based on TOC).\n"
         "2) Emit `spec_navigation.toc_sections` for at least 3 sections you will inspect first.\n"
         "3) Use provided TOC entry text and section excerpts as evidence when selecting parts.\n"
         "4) Map suspected parts/components with concrete hardware terms.\n"

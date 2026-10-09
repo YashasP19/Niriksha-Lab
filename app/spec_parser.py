@@ -30,7 +30,7 @@ def _looks_like_toc_page_marker(text: str) -> bool:
     lowered = text.lower().strip()
     return bool(
         re.match(
-            r"^(table of contents|contents|content|목차|toc)\b",
+            r"^(table of contents|contents|content|toc)\b",
             lowered,
         )
     )

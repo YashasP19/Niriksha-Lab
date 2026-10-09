@@ -10,7 +10,7 @@ from app.file_processing import (
 
 
 def _fixture_pdf(name: str) -> UploadedFileInput:
-    data = Path("실제데이터") / name
+    data = Path("real-data") / name
     return UploadedFileInput(
         file_name=name,
         mime_type="application/pdf",

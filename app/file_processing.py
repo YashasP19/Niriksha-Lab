@@ -181,7 +181,7 @@ def _select_datasheet_inputs(file_inputs: list[UploadedFileInput]) -> list[Uploa
 def _contains_toc_marker(text: str) -> bool:
     lowered = text.lower()
     return bool(
-        re.search(r"\b(table of contents|contents|content|목차|toc)\b", lowered)
+        re.search(r"\b(table of contents|contents|content|toc)\b", lowered)
     )
 
 
