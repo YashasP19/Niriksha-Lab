@@ -166,8 +166,11 @@ export const useOrchestrationStore = create<OrchestrationState>((set, get) => ({
 
   fetchModels: async () => {
     try {
-      const models = await api.models();
-      set(() => ({ models, selectedModel: models.recommended_model, backendAvailable: true }));
+      const all = await api.models();
+      const gemma = all.available_models.filter((m) => /gemma-?4/i.test(m.name));
+      const models = { ...all, available_models: gemma };
+      const selected = gemma.find((m) => m.name === all.recommended_model)?.name ?? gemma[0]?.name ?? null;
+      set(() => ({ models: { ...models, recommended_model: selected ?? '' }, selectedModel: selected, backendAvailable: true }));
     } catch {
       set(() => ({ backendAvailable: false }));
     }
