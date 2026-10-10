@@ -1,7 +1,7 @@
 # Niriksha Lab — Background & System Context
 
 ### 1. Overview
-Niriksha Lab (Argus) is an AI-powered multi-agent hardware validation framework that bridges the gap between hardware error logs, engineering specifications, CAD schematics, and optical PCB inspection images.
+Niriksha Lab is an AI-powered multi-agent hardware validation framework that bridges the gap between hardware error logs, engineering specifications, CAD schematics, and optical PCB inspection images.
 
 ### 2. Multi-Agent Hardware Verification Flow
 * **Agent 1 (Symptom Analyzer):** Parses raw hardware error logs (e.g. I2C Bus Arbitration failure, PCIe link downgrade) to identify suspect nets and components.

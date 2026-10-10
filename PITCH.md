@@ -1,11 +1,11 @@
-# Argus — Pitch Script
+# Niriksha Lab — Pitch Script
 ### AI-Powered PCB Hardware Validator
 
 ---
 
 ## Opening Hook (30 sec)
 
-> "When a circuit board fails on the manufacturing floor, engineers spend hours — sometimes days — reading error logs, cross-checking schematics, and hunting for the defect under a microscope. We built Argus to do that in seconds."
+> "When a circuit board fails on the manufacturing floor, engineers spend hours — sometimes days — reading error logs, cross-checking schematics, and hunting for the defect under a microscope. We built Niriksha Lab to do that in seconds."
 
 ---
 
@@ -20,7 +20,7 @@ PCB hardware validation today is:
 
 ---
 
-## What Argus Does (1 min)
+## What Niriksha Lab Does (1 min)
 
 **One upload. Four AI agents. One diagnosis.**
 
@@ -60,7 +60,7 @@ All four agents run in parallel using **Gemma 4**, Google's latest model, and ha
 
 ## Live Demo Flow (2 min)
 
-1. **Open Argus** at `localhost:5173`
+1. **Open Niriksha Lab** at `localhost:5173`
 2. **Drop a circuit board image** into the upload zone — it auto-classifies the file
 3. Watch the **agent pipeline animate** in real time:
    - Agent 1 lights up → Error Analyzer reads the log
@@ -101,4 +101,4 @@ We are looking for:
 
 ## One Line
 
-> *Argus turns a broken circuit board photo into a root-cause diagnosis and fix plan — in seconds, not hours.*
+> *Niriksha Lab turns a broken circuit board photo into a root-cause diagnosis and fix plan — in seconds, not hours.*

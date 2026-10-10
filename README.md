@@ -1,6 +1,6 @@
-# Argus — AI-Powered PCB Hardware Validator
+# Niriksha Lab — AI-Powered PCB Hardware Validator
 
-Argus is a multi-agent AI system that diagnoses PCB (Printed Circuit Board) defects by orchestrating five specialized Gemini-powered agents. Given an error log, a design template image, a tested board image, and (optionally) spec documents, it produces a root-cause diagnosis, spec-compliance checks, and visually annotated defect images.
+Niriksha Lab is a multi-agent AI system that diagnoses PCB (Printed Circuit Board) defects by orchestrating five specialized Gemini-powered agents. Given an error log, a design template image, a tested board image, and (optionally) spec documents, it produces a root-cause diagnosis, spec-compliance checks, and visually annotated defect images.
 
 ## Architecture
 
