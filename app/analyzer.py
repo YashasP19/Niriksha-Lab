@@ -41,7 +41,7 @@ def template_exists() -> bool:
 async def analyze_test_image(
     test_bytes: bytes,
     gemini_service: GeminiService,
-    model: str = "gemini-3.1-flash-image-preview",
+    model: str = "gemma-4-31b-it",
 ) -> AnalysisResult:
     """Analyze a test image by diffing against the stored template.
 

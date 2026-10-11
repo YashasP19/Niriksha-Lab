@@ -17,23 +17,13 @@ from .utils import safe_json_loads
 MODEL_PRIORITY = [
     "gemma-4-31b-it",
     "gemma-4-26b-a4b-it",
-    "gemini-3.1-flash-image-preview",
-    "gemini-3.1-pro-preview",
-    "gemini-3-flash-preview",
-    "gemini-2.5-pro",
-    "gemini-2.5-flash",
 ]
 
 MODEL_ALIAS = {
     "gemma-4": "gemma-4-31b-it",
-    "gemini-3.1-flash": "gemini-3.1-flash-image-preview",
-    "gemini-3.1-flash-image": "gemini-3.1-flash-image-preview",
 }
 
-# Models that are image-focused and unreliable for structured JSON output.
-# generate_json will swap to JSON_FALLBACK_MODEL for these.
-_IMAGE_ONLY_MODELS = {"gemini-3.1-flash-image-preview"}
-JSON_FALLBACK_MODEL = "gemini-3.1-pro-preview"
+DEFAULT_MODEL_NAME = "gemma-4-31b-it"
 
 
 @dataclass
@@ -150,7 +140,7 @@ class GeminiService:
         if available:
             return available[0].name
 
-        return "gemini-3.1-flash-image-preview"
+        return DEFAULT_MODEL_NAME
 
     def generate_json(
         self,
@@ -162,19 +152,11 @@ class GeminiService:
         max_output_tokens: int,
         image_parts: list[tuple[bytes, str]] | None = None,
     ) -> dict[str, Any]:
-        # Image-focused models are unreliable for structured JSON;
-        # swap to the pro model for JSON generation.
-        if model in _IMAGE_ONLY_MODELS:
-            model = JSON_FALLBACK_MODEL
-
         parts: list[Any] = [prompt]
         for image_bytes, mime_type in image_parts or []:
             parts.append(types.Part.from_bytes(data=image_bytes, mime_type=mime_type))
 
-        is_pro_thinking_model = (
-            model.startswith("gemini-3.1-pro")
-            or model.startswith("gemini-3-pro-preview")
-        )
+        is_pro_thinking_model = False
         thinking_budget = 128 if is_pro_thinking_model else 0
         effective_max_output_tokens = max(
             max_output_tokens,
@@ -370,7 +352,7 @@ class GeminiService:
         crop_raw: bytes,
         crop_highlighted: bytes,
         *,
-        model: str = "gemini-3.1-flash-image-preview",
+        model: str = DEFAULT_MODEL_NAME,
         mime_type: str = "image/png",
         temperature: float = 0.1,
     ) -> GeminiDefectResponse:
@@ -414,7 +396,7 @@ class GeminiService:
         severity: str,
         description: str,
         *,
-        model: str = "gemini-3.1-flash-image-preview",
+        model: str = DEFAULT_MODEL_NAME,
         mime_type: str = "image/png",
         temperature: float = 0.1,
     ) -> bytes | None:

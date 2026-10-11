@@ -33,11 +33,7 @@ def probe_vision_models(options: VisionProbeOptions | None = None) -> VisionProb
         default_candidates = [
             model.name
             for model in available
-            if (
-                model.name.startswith("gemini-3")
-                or model.name.startswith("gemini-2.5")
-                or model.name in {"gemini-pro-latest", "gemini-flash-latest", "gemini-flash-lite-latest"}
-            )
+            if model.name.startswith("gemma-4")
         ]
         candidate_models = options.candidate_models or sorted(set(default_candidates))
 

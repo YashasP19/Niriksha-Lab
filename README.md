@@ -1,6 +1,6 @@
 # Niriksha Lab — AI-Powered PCB Hardware Validator
 
-Niriksha Lab is a multi-agent AI system that diagnoses PCB (Printed Circuit Board) defects by orchestrating five specialized Gemini-powered agents. Given an error log, a design template image, a tested board image, and (optionally) spec documents, it produces a root-cause diagnosis, spec-compliance checks, and visually annotated defect images.
+Niriksha Lab is a multi-agent AI system that diagnoses PCB (Printed Circuit Board) defects by orchestrating five specialized agents powered by **Gemma 4** (`gemma-4-31b-it`, `gemma-4-26b-a4b-it`). Given an error log, a design template image, a tested board image, and (optionally) spec documents, it produces a root-cause diagnosis, spec-compliance checks, and visually annotated defect images.
 
 ## Architecture
 
@@ -48,7 +48,7 @@ User Input (error log, images, specs)
 
 ## Tech Stack
 
-**Backend:** Python 3.11+, FastAPI, Google Generative AI (Gemini), OpenCV, Pillow, Pydantic v2
+**Backend:** Python 3.11+, FastAPI, Google Generative AI SDK serving Gemma 4, OpenCV, Pillow, Pydantic v2
 
 **Frontend:** React 19, TypeScript, Vite, Zustand
 
@@ -58,7 +58,7 @@ User Input (error log, images, specs)
 
 - Python 3.11+
 - Node.js 18+
-- One or more [Google Gemini API keys](https://aistudio.google.com/apikey)
+- One or more [Google AI Studio API keys](https://aistudio.google.com/apikey) with access to Gemma 4
 
 ### Backend
 
@@ -89,11 +89,11 @@ The dev server starts at http://localhost:5173 and proxies `/api` requests to po
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `GEMINI_API_KEYS` | Comma-separated Gemini API keys (round-robin pool) | *required* |
-| `DEFAULT_MODEL` | Gemini model override | `gemini-3.1-flash-image-preview` |
+| `GEMINI_API_KEYS` | Comma-separated Google AI Studio API keys used to call Gemma (round-robin pool) | *required* |
+| `DEFAULT_MODEL` | Model override; set to `gemma-4-31b-it` for Gemma-only runs | `gemma-4-31b-it` (recommended) |
 | `DEFAULT_TEMPERATURE` | LLM temperature | `0.2` |
 | `MAX_OUTPUT_TOKENS` | Maximum response tokens | `1200` |
-| `REQUEST_TIMEOUT_SEC` | Gemini request timeout (seconds) | `90` |
+| `REQUEST_TIMEOUT_SEC` | Model request timeout (seconds) | `90` |
 
 ## API Endpoints
 
@@ -102,7 +102,7 @@ The dev server starts at http://localhost:5173 and proxies `/api` requests to po
 | Method | Path | Description |
 |--------|------|-------------|
 | GET | `/health` | Server status and key count |
-| GET | `/models` | Available Gemini models + recommendation |
+| GET | `/models` | Available models + recommendation (UI shows only Gemma 4) |
 | GET | `/keys/status` | API key pool health |
 
 ### Orchestration
@@ -144,7 +144,7 @@ The dev server starts at http://localhost:5173 and proxies `/api` requests to po
     "tested_image": { "mime_type": "image/png", "file_path": "data/assets/tested_board.png" }
   },
   "options": {
-    "model": "gemini-3.1-pro-preview",
+    "model": "gemma-4-31b-it",
     "include_raw_agent_payloads": true
   }
 }
@@ -157,7 +157,7 @@ Either `spec_excerpt` (direct text) or `spec_document_path` (PDF/TXT path) shoul
 - **Multi-Agent Pipeline** — Five specialized agents with parallel fan-out (agents 2A/2B run concurrently via ThreadPoolExecutor)
 - **Multi-Key Pool** — Round-robin API key rotation with rate-limit backoff and health tracking
 - **OpenCV Diff Engine** — Pixel-level template-vs-tested comparison with morphological noise filtering, contour detection, and region merging; highlighted diff crops are composited into the final annotated image
-- **Model Routing** — Image-focused models handle vision tasks; structured JSON generation automatically falls back to `gemini-3.1-pro-preview`
+- **Gemma 4 Models** — All agents run on Gemma 4; the frontend model selector lists only Gemma 4 models
 - **Spec Parsing** — Supports PDF and plain-text specification documents with TOC extraction and section focus planning
 - **Frontend Visualization** — Side-by-side image comparison with interactive bounding box overlays, staged agent reveal animation, and a diagnosis dashboard
 
@@ -167,8 +167,8 @@ Either `spec_excerpt` (direct text) or `spec_document_path` (PDF/TXT path) shoul
 ├── app/
 │   ├── main.py              # FastAPI app, CORS, router includes
 │   ├── orchestrator.py       # Multi-agent pipeline execution
-│   ├── agents.py             # Agent runner (prompt → Gemini → parse)
-│   ├── gemini_client.py      # Multi-key Gemini client with retry
+│   ├── agents.py             # Agent runner (prompt → Gemma → parse)
+│   ├── gemini_client.py      # Multi-key Google AI client (Gemma) with retry
 │   ├── key_pool.py           # Round-robin API key management
 │   ├── config.py             # Settings from environment
 │   ├── schemas.py            # Pydantic models
@@ -222,4 +222,4 @@ pytest tests/ -v
 
 ## Model Policy
 
-The orchestrator enforces the latest recommended available model. If the selected model fails, the error is surfaced rather than silently falling back to an older model family. Image-only models (e.g. `gemini-3.1-flash-image-preview`) are automatically swapped to `gemini-3.1-pro-preview` for endpoints that require structured JSON output.
+This project is built for a hackathon that requires **Gemma** models only. The supported models are `gemma-4-31b-it` (default) and `gemma-4-26b-a4b-it`, and the frontend model selector filters to Gemma 4. If the selected model fails, the error is surfaced rather than silently falling back to another model family.

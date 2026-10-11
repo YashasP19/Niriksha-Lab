@@ -49,7 +49,7 @@ class OrchestrationEngine:
             if self.settings.default_model:
                 resolved_default = self.gemini.resolve_model_name(self.settings.default_model)
                 return resolved_default or self.settings.default_model
-            return "gemini-3.1-flash-image-preview"
+            return "gemma-4-31b-it"
 
         if requested_model:
             normalized_requested = self.gemini.resolve_model_name(requested_model)

@@ -9,12 +9,12 @@ from app.schemas import ImageInput, ModelInfo, OrchestrationInput, Orchestration
 
 class _FakeGemini:
     def list_generate_models(self):
-        return [ModelInfo(name="gemini-2.5-flash")]
+        return [ModelInfo(name="gemma-4-26b-a4b-it")]
 
     @staticmethod
     def pick_recommended_model(available, default_model=None):
         _ = available, default_model
-        return "gemini-2.5-flash"
+        return "gemma-4-26b-a4b-it"
 
 
 class _StubRunner:

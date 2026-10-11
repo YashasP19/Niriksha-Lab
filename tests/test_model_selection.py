@@ -50,36 +50,36 @@ def _mk_settings(tmp_path: Path, *, default_model: str | None) -> Settings:
 
 
 def test_resolve_model_alias_to_3_1_flash_image_preview():
-    assert GeminiService.resolve_model_name("gemini-3.1-flash") == "gemini-3.1-flash-image-preview"
+    assert GeminiService.resolve_model_name("gemma-4") == "gemma-4-31b-it"
 
 
 def test_pick_recommended_model_prefers_default_flash_alias(tmp_path):
-    fake = _FakeGeminiService(["gemini-3.1-flash-image-preview", "gemini-2.5-pro"])
+    fake = _FakeGeminiService(["gemma-4-31b-it", "gemma-4-26b-a4b-it"])
     available = fake.list_generate_models()
     assert (
         GeminiService.pick_recommended_model(
             available,
-            default_model="gemini-3.1-flash",
+            default_model="gemma-4",
         )
-        == "gemini-3.1-flash-image-preview"
+        == "gemma-4-31b-it"
     )
 
 
 def test_orchestrator_accepts_flash_alias_as_request(tmp_path):
-    fake = _FakeGeminiService(["gemini-3.1-flash-image-preview", "gemini-2.5-pro"])
+    fake = _FakeGeminiService(["gemma-4-31b-it", "gemma-4-26b-a4b-it"])
     engine = OrchestrationEngine(
         settings=_mk_settings(tmp_path, default_model=None),
         gemini_service=fake,
     )
-    model = engine._pick_model("gemini-3.1-flash")
-    assert model == "gemini-3.1-flash-image-preview"
+    model = engine._pick_model("gemma-4")
+    assert model == "gemma-4-31b-it"
 
 
 def test_orchestrator_fallback_resolves_default_alias_when_list_fails(tmp_path):
     broken = _BrokenGeminiService([])
     engine = OrchestrationEngine(
-        settings=_mk_settings(tmp_path, default_model="gemini-3.1-flash"),
+        settings=_mk_settings(tmp_path, default_model="gemma-4"),
         gemini_service=broken,
     )
     model = engine._pick_model(None)
-    assert model == "gemini-3.1-flash-image-preview"
+    assert model == "gemma-4-31b-it"

@@ -20,7 +20,7 @@ def client():
         settings = MagicMock()
         settings.gemini_api_keys = []
         settings.request_timeout_sec = 10
-        settings.default_model = "gemini-3.1-flash"
+        settings.default_model = "gemma-4"
         mock_settings.return_value = settings
 
         with TestClient(app) as c:
